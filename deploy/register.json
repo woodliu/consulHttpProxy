@@ -1,0 +1,11 @@
+{
+  "Name": "test1-exporter",
+  "Tags": [
+    "primary",
+    "v1"
+  ],
+  "Address": "10.10.10.1",
+  "Port": 3333,
+  "EnableTagOverride": false,
+  "Tags": ["aa,bb"]
+}
