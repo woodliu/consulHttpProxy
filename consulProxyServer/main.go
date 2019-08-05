@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Regconsul"
+	"consulHttpProxy"
 	"io"
 	"log"
 	"net/http"
@@ -12,9 +12,9 @@ import (
 
 var logger = log.New(os.Stdout,"[ConsulProxy]",log.LstdFlags)
 
-const (
+var (
 	consulServiceAddr = "127.0.0.1:8500"
-	agentProxyAddr = "0.0.0.0:8400"
+	agentProxyAddr = "0.0.0.0:"+util.GetEnv("CONSUL_SERVER_PORT","8700")
 )
 const (
 	deleteHostHeader = true

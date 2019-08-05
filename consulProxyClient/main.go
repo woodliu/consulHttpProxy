@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Regconsul"
+	"consulHttpProxy"
 	"encoding/json"
 	"flag"
 	"fmt"

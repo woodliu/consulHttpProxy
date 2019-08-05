@@ -48,3 +48,11 @@ func ServiceExist(service string, catalog *api.Catalog, queryOptions *api.QueryO
 func DeleteService(service string,catalog *api.Catalog, queryOptions *api.QueryOptions,agent *api.Agent)error{
     return agent.ServiceDeregister(service)
 }
+
+func GetEnv(key, defaultValue string) string {
+	value, ok := os.LookupEnv(key)
+	if !ok {
+		return defaultValue
+	}
+	return value
+}
