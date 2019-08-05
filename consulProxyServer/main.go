@@ -13,9 +13,11 @@ import (
 var logger = log.New(os.Stdout,"[ConsulProxy]",log.LstdFlags)
 
 var (
-	consulServiceAddr = "127.0.0.1:8500"
+	consulServerPort = "8500"
+	consulServerAddr = "127.0.0.1:"+consulServerPort
 	agentProxyAddr = "0.0.0.0:"+util.GetEnv("CONSUL_SERVER_PORT","8700")
 )
+
 const (
 	deleteHostHeader = true
 	keepHostHeader   = false
@@ -35,7 +37,7 @@ func copyHeaders(dst, src http.Header, keepDestHeaders bool) {
 }
 
 func deleteConsulService(url *url.URL){
-	target := consulServiceAddr
+	target := consulServerAddr
 	serviceName := url.Path[strings.LastIndex(url.Path,"/")+1:]
 	dataCenter := url.RawQuery[strings.LastIndex(url.RawQuery,"=")+1:]
 	//Get meta data from local consul server
@@ -57,8 +59,8 @@ func deleteConsulService(url *url.URL){
 		return
 	}
 
-	serviceNode := catalogServices[0].Address
-	catalog,agent,queryOptons,err = util.NewConsulAgentMetaData(serviceNode,dataCenter)
+	serverNode := catalogServices[0].Address+":"+consulServerPort
+	catalog,agent,queryOptons,err = util.NewConsulAgentMetaData(serverNode,dataCenter)
 	if nil != err{
 		util.Logger.Println(err)
 		return
@@ -71,7 +73,7 @@ func deleteConsulService(url *url.URL){
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-		req.URL.Host = consulServiceAddr
+		req.URL.Host = consulServerAddr
 		req.URL.Scheme = "http"
 		//Create a new Request to consul server
 		req,err := http.NewRequest(req.Method,req.URL.String(),req.Body)
@@ -106,6 +108,5 @@ func main() {
 	util.Logger.Println("Start Listen on:",agentProxyAddr)
 	http.ListenAndServe(agentProxyAddr, nil)
 }
-
 
 
