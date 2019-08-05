@@ -25,16 +25,16 @@ var (
 
 func usage() {
 	fmt.Fprintf(os.Stderr, `
-Usage: RegConsul [options...] 
+Usage: consulProxyClient [options...] 
 
 #List all services
-RegConsul -l -t ${host}:${port}
+consulProxyClient -l -t ${host}:${port}
 #List service by name
-RegConsul -l --sn=${serviceName} -t ${host}:${port}
+consulProxyClient -l --sn=${serviceName} -t ${host}:${port}
 #Add service
-RegConsul -a ${regFile} -t ${host}:${port}
+consulProxyClient -a ${regFile} -t ${host}:${port}
 #Delete service
-RegConsul -d ${serviceName} -t ${host}:${port}
+consulProxyClient -d ${serviceName} -t ${host}:${port}
 
 Options:
 `)
