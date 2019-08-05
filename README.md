@@ -26,7 +26,7 @@ When use load balance to register a service, the load balance will choice one co
 
 #### WorkFlow
 
-The work flow like below, consul proxy server works as a sidecar container with consul server. It will deliver the service `deregister` event to the right consul server.
+The work flow like below, consul proxy server works as a sidecar container with consul server. It will deliver the service `deregister` event to the right consul server. Here, it use the serviceName as the unique Key for each service, when register a service, there will be only one server store it.
 
 You can build a `consulProxyClient` to add/list/delete service
 
