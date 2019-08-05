@@ -22,7 +22,7 @@ Deploy sequence：
 
 #### What is this tool work for?
 
-When use load balance/gateway to register a service, the load balance will choice one consul server to store the service. When delete a service, the load balance may choice the wrong consul server according to the balance strategy.
+When use load balance/gateway to register a service, the load balance will choice one consul server to store the service. When delete a service, the load balance/gateway may choice the wrong consul server according to the balance strategy.
 
 #### WorkFlow
 
