@@ -165,7 +165,7 @@ func addService(agent *api.Agent, catalog *api.Catalog, queryOptions *api.QueryO
 		return
 	}
 	if exsit{
-		util.Logger.Println("Service:",service,"has existed")
+		util.Logger.Println("Service:",service.Name,"has existed")
 		return
 	}
 
