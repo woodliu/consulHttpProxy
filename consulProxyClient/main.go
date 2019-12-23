@@ -9,6 +9,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -17,6 +18,7 @@ var (
 	l bool
 	a string
 	d string
+	e string
 	dc string
 	t string
 	sn string
@@ -46,6 +48,7 @@ func main() {
 	flag.StringVar(&d, "d", "", "delete a service by `servicename`")
 	flag.StringVar(&dc, "dc", "dc1", "`datacenter`")
 	flag.StringVar(&a, "a", "", "add a service by `filename`")
+	flag.StringVar(&e, "e", "", "export a service by `filename`")
 	flag.StringVar(&t, "t", "", "`target`,format: [${ip}:${port}] / [${dns_name}:${port}]")
 	flag.StringVar(&sn, "sn", "", "consul `servicename`,used for getting service by name")
 	flag.Usage =usage
@@ -91,6 +94,15 @@ func main() {
 		}
 		return
 	}
+
+	//Exporter service, default export services in dc1
+	if e !="" && !strings.HasPrefix(e,"-"){
+		err = exportServices(catalog ,queryOptons,e)
+		if nil != err{
+			util.Logger.Println(err)
+		}
+		return
+	}
 }
 
 func listServices(catalog *api.Catalog, q *api.QueryOptions){
@@ -125,6 +137,36 @@ func listServicesByTags(catalog *api.Catalog, service string, q *api.QueryOption
 	}
 }
 
+
+func exportServices(catalog *api.Catalog, q *api.QueryOptions, fileName string)error{
+	services,_,err := catalog.Services(q)
+	if nil != err{
+		return err
+	}
+
+	//Delete service created by consul
+	delete(services,"consul")
+
+	var fileContent string = "[\n"
+	for serviceName,_ := range services{
+		// there can be only one service by a given name
+		catalogServices,_ := util.GetServices(catalog, serviceName ,q)
+		tags := "["
+		for _, tag := range catalogServices[0].ServiceTags{
+			tags = tags + "\"" + tag + "\","
+		}
+		tags = strings.TrimRight(tags,",")
+		tags = tags+"]"
+		fileContent = fileContent + "{"+"\"ID\":\"" + catalogServices[0].ServiceID +"\",\"Name\":\"" + catalogServices[0].ServiceName + "\",\"Address\":\"" + catalogServices[0].Address + "\",\"Port\":" + strconv.Itoa(catalogServices[0].ServicePort) + ",\"EnableTagOverride\":false" + ",\"Tags\":" + tags + "},\n"
+
+	}
+	fileContent = strings.TrimRight(fileContent,",\n")
+	fileContent = fileContent+"\n]"
+	err = ioutil.WriteFile(fileName, []byte(fileContent),0666)
+	return err
+}
+
+
 func addService(agent *api.Agent, catalog *api.Catalog, queryOptions *api.QueryOptions, f string){
 	body,err := ioutil.ReadFile(f)
 	if err != nil {
@@ -132,46 +174,48 @@ func addService(agent *api.Agent, catalog *api.Catalog, queryOptions *api.QueryO
 		return
 	}
 
-	service := &api.AgentServiceRegistration{}
-	err = json.Unmarshal(body,service)
+	var svcs []api.AgentServiceRegistration
+	err = json.Unmarshal(body,&svcs)
 	if err != nil {
 		util.Logger.Println(err)
 		return
 	}
 
-	//Set service.id equal to service.name, we add and delete service by service name. Service register file like below
-	service.ID = service.Name
-	/*
-		{
-		  "Name": "test-exporter",
-		  "Tags": [
-			"primary",
-			"v1"
-		  ],
-		  "Address": "10.10.10.1",
-		  "Port": 3333,
-		  "EnableTagOverride": false,
-		  "Tags": ["aa,bb"]
+	for _,service := range svcs{
+		//Set service.id equal to service.name, we add and delete service by service name. Service register file like below
+		service.ID = service.Name
+		/*
+			{
+			  "Name": "test-exporter",
+			  "Tags": [
+				"primary",
+				"v1"
+			  ],
+			  "Address": "10.10.10.1",
+			  "Port": 3333,
+			  "EnableTagOverride": false,
+			  "Tags": ["aa,bb"]
+			}
+		 */
+
+		//Append a tags named service.Name to help get service detail info
+		service.Tags = append(service.Tags,service.Name)
+
+		//Preventing adding service with same name
+		exsit,err1 := util.ServiceExist(service.Name,catalog,queryOptions)
+		if nil != err1{
+			util.Logger.Println(err1)
+			return
 		}
-	 */
+		if exsit{
+			util.Logger.Println("Service:",service.Name,"has existed")
+			return
+		}
 
-	 //Append a tags named service.Name to help get service detail info
-	 service.Tags = append(service.Tags,service.Name)
-
-	//Preventing adding service with same name
-	exsit,err1 := util.ServiceExist(service.Name,catalog,queryOptions)
-	if nil != err1{
-		util.Logger.Println(err1)
-		return
-	}
-	if exsit{
-		util.Logger.Println("Service:",service.Name,"has existed")
-		return
-	}
-
-	 //Register a service
-	err = agent.ServiceRegister(service)
-	if err != nil {
-		util.Logger.Println(err)
+		//Register a service
+		err = agent.ServiceRegister(&service)
+		if err != nil {
+			util.Logger.Println(err)
+		}
 	}
 }
