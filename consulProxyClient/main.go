@@ -209,15 +209,15 @@ func addService(agent *api.Agent, catalog *api.Catalog, queryOptions *api.QueryO
 			util.Logger.Println(err1)
 			return
 		}
+
 		if exsit{
 			util.Logger.Println("Service:",service.Name,"has existed")
-			return
-		}
-
-		//Register a service
-		err = agent.ServiceRegister(&service)
-		if err != nil {
-			util.Logger.Println(err)
+		}else{
+			//Register a service
+			err = agent.ServiceRegister(&service)
+			if err != nil {
+				util.Logger.Println(err)
+			}
 		}
 	}
 }
