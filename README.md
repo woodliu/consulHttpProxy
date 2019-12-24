@@ -32,6 +32,41 @@ You can build a `consulProxyClient` to add/list/delete service
 
 ![](./image/workflow.png)
 
+### usage
+
+```shell
+# ./consulClient --help
+
+Usage: consulProxyClient [options...]
+
+#List all services
+consulProxyClient -l -t ${host}:${port}
+#List service by name
+consulProxyClient -l --sn=${serviceName} -t ${host}:${port}
+#Add service
+consulProxyClient -a ${regFile} -t ${host}:${port}
+#Delete service
+consulProxyClient -d ${serviceName} -t ${host}:${port}
+#Exporter the services
+consulProxyClient -e ${fileName} -t ${host}:${port}
+
+Options:
+  -a filename
+        add a service by filename
+  -d servicename
+        delete a service by servicename
+  -dc datacenter
+        datacenter (default "dc1")
+  -e filename
+        export a service by filename
+  -h    help
+  -l    list services
+  -sn servicename
+        consul servicename,used for getting service by name
+  -t target
+        target,format: [${ip}:${port}] / [${dns_name}:${port}]
+```
+
 #### constraint
 
 - This tool used for `HTTP` scheme not `HTTPs`

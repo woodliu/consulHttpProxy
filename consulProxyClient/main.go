@@ -37,6 +37,8 @@ consulProxyClient -l --sn=${serviceName} -t ${host}:${port}
 consulProxyClient -a ${regFile} -t ${host}:${port}
 #Delete service
 consulProxyClient -d ${serviceName} -t ${host}:${port}
+#Exporter the services
+consulProxyClient -e ${fileName} -t ${host}:${port}
 
 Options:
 `)
