@@ -155,11 +155,13 @@ func exportServices(catalog *api.Catalog, q *api.QueryOptions, fileName string)e
 		catalogServices,_ := util.GetServices(catalog, serviceName ,q)
 		tags := "["
 		for _, tag := range catalogServices[0].ServiceTags{
-			tags = tags + "\"" + tag + "\","
+			if tag != catalogServices[0].ServiceID{
+				tags = tags + "\"" + tag + "\","
+			}
 		}
 		tags = strings.TrimRight(tags,",")
 		tags = tags+"]"
-		fileContent = fileContent + "{"+"\"ID\":\"" + catalogServices[0].ServiceID +"\",\"Name\":\"" + catalogServices[0].ServiceName + "\",\"Address\":\"" + catalogServices[0].Address + "\",\"Port\":" + strconv.Itoa(catalogServices[0].ServicePort) + ",\"EnableTagOverride\":false" + ",\"Tags\":" + tags + "},\n"
+		fileContent = fileContent + "{"+"\"ID\":\"" + catalogServices[0].ServiceID +"\",\"Name\":\"" + catalogServices[0].ServiceName + "\",\"Address\":\"" + catalogServices[0].ServiceAddress + "\",\"Port\":" + strconv.Itoa(catalogServices[0].ServicePort) + ",\"EnableTagOverride\":false" + ",\"Tags\":" + tags + "},\n"
 
 	}
 	fileContent = strings.TrimRight(fileContent,",\n")
