@@ -71,3 +71,14 @@ Options:
 
 - This tool used for `HTTP` scheme not `HTTPs`
 - Pods should communicate with each other(Eg. overlay network)
+
+
+
+
+
+### Gen .proto.go
+
+```
+protoc.exe -I proto\ proto\register.proto --go_out=plugins=grpc:proto
+```
+

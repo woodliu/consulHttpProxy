@@ -88,9 +88,6 @@ spec:
           securityContext:
             privileged: true
           image: "consul-proxy:v1"
-          env:
-            - name: CONSUL_SERVER_PORT
-              value: 8700
           ports:
             - containerPort: 8700
               name: proxy-port

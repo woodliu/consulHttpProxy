@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package registerproto;
+
+
+service Request {
+    rpc ListRequest (ListReqMsg) returns (ListRespMsg) {}
+    rpc AddRequest (AddReqMsg) returns (RespResult) {}
+    rpc UpdateRequest (UpdateReqMsg) returns (RespResult) {}
+    rpc RemoveRequest (RemoveReqMsg) returns (RespResult) {}
+}
+
+message AppExporterInfo {
+    string id = 1;
+    string team = 2;
+    repeated string tags = 3;
+    string scheme = 4;
+    string metricPath = 5;
+}
+
+message ListReqMsg{
+    string team =  1;
+}
+
+message ListRespMsg{
+    repeated AppExporterInfo appInfos = 1;
+}
+
+message AddReqMsg{
+    string team =  1;
+    repeated AppExporterInfo appInfos = 2;
+}
+
+message UpdateReqMsg{
+    string team =  1;
+    repeated AppExporterInfo appInfos = 2;
+}
+
+message RemoveReqMsg{
+    string team =  1;
+    repeated string serviceId = 2;
+}
+
+message RespResult{
+    int32 ret = 1;
+}
