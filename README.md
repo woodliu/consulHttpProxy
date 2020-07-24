@@ -135,21 +135,11 @@ Flags:
 #### constraint
 
 - This tool used for `HTTP` scheme not `HTTPs`
-- 
+- You can specify the `https` `Scheme` in reg.json, but it won't work, because this tool hasn't support TLS or other authentication.
 
+Because this tool base on grpc, if using openshift, the openshift route may not support grpc, should use nodeport to redirect the flow.
 
-
-### Gen .proto.go
-
-```
-
-```
-
-
-
-grpc无法通过route暴露，需要通过lb
-
-```
+```shell
 # cat consul-proxy-service.yaml
 apiVersion: v1
 kind: Service
@@ -166,4 +156,3 @@ spec:
   selector:
     app: consul
 ```
-
