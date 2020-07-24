@@ -74,7 +74,6 @@ func main() {
 
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{"Scheme","Id","MetricPath","Tags"})
-		table.SetAutoMergeCellsByColumnIndex([]int{2,3})
 		for _, v := range resp.AppInfos {
 			table.Append([]string{v.Scheme,v.Id,v.MetricPath,fmt.Sprint(v.Tags)})
 		}

@@ -1,5 +1,9 @@
 [
 {"ID":"10.86.42.7:9189","Team":"cii","Tags":["glusterfs"]},
 {"ID":"10.86.42.8:9189","Team":"cii","Tags":["glusterfs"]},
-{"ID":"10.86.42.9:9189","Team":"cii","Tags":["glusterfs"]}
+{"ID":"10.86.42.9:9189","Team":"cii","Tags":["glusterfs"]},
+{"ID":"10.85.6.17:9100","Team":"cii","Tags":["dev,kong"]},
+{"ID":"10.85.6.18:9100","Team":"cii","Tags":["dev,kong"]},
+{"ID":"10.85.6.19:9100","Team":"cii","Tags":["dev,kong"]},
+{"ID":"10.85.6.20:9100","Team":"cii","Tags":["dev,kong"]}
 ]
