@@ -1,5 +1,5 @@
 [
-{"ID":"10.86.42.7:9189","Team":"cii","Tags":["glusterfs"],"MetricPath":"/invalid/metrics"},
-{"ID":"10.86.42.8:9189","Team":"cii","Tags":["glusterfs"]},
-{"ID":"10.86.42.9:9189","Team":"cii","Tags":["glusterfs"]}
+{"ID":"11.11.11.11:9100","Team":"private","Tags":["test1,test11"]},
+{"ID":"22.22.22.22:8888","Team":"private","Tags":["test2"],"Scheme":"https","MetricPath":"/path/metrics"},
+{"ID":"33.33.33.33:9100","Team":"private","Tags":["test3,test33,test333"]}
 ]

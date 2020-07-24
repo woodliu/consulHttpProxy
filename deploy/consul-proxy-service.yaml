@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul-proxy
+  labels:
+    name: consul-proxy
+spec:
+  type: NodePort
+  ports:
+    - name: consul-proxy
+      port: 8700
+      nodePort: 30001
+  selector:
+    app: consul
