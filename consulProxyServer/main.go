@@ -23,7 +23,7 @@ var (
 	Port = kingpin.Flag("port","consul proxy port").Default("8700").String()
 
 	ConsulServerAddr = "127.0.0.1:"+ util.ConsulServerPort
-	//ConsulServerAddr = "consul-reg-prometheus.uatapps.opsocp.csvw.com"
+	//ConsulServerAddr = "10.160.242.181:8500"
 )
 
 type server struct {}
@@ -31,9 +31,8 @@ type server struct {}
 func (s *server)ListRequest(ctx context.Context, in *pb.ListReqMsg) (*pb.ListRespMsg, error){
 	team := in.GetTeam()
 	catalog,_,queryOptons,_ := util.NewConsulAgentMetaData(ConsulServerAddr,util.DataCenter)
-	listResp,err := util.ListServices(team, catalog, queryOptons)
 
-	return listResp,err
+	return util.ListServices(team, catalog, queryOptons)
 }
 
 func (s *server)AddRequest(ctx context.Context,in *pb.AddReqMsg) (*pb.RespResult, error){
@@ -67,7 +66,7 @@ func (s *server)AddRequest(ctx context.Context,in *pb.AddReqMsg) (*pb.RespResult
 		svcID := strings.Split(svc.Id,":")
 		if 2 != len(svcID){
 			errStr := fmt.Sprintf("Target:[%s] format error!",svc.Id)
-			return nil,errors.New(errStr)
+			return new(pb.RespResult),errors.New(errStr)
 		}
 
 		address,p := svcID[0],svcID[1]
@@ -75,15 +74,11 @@ func (s *server)AddRequest(ctx context.Context,in *pb.AddReqMsg) (*pb.RespResult
 		svcReg = append(svcReg,api.AgentServiceRegistration{ID: svc.Id,Name: svc.Id,Address: address,Port: port,Tags: tags})
 	}
 
-	err := util.AddServices(agent, catalog, queryOptons, svcReg)
-	if nil == err{
-		return &pb.RespResult{Ret: 0},nil
-	}
-	return nil,err
+	return new(pb.RespResult),util.AddServices(agent, catalog, queryOptons, svcReg)
 }
 
 func (s *server)UpdateRequest(ctx context.Context,in *pb.UpdateReqMsg)(*pb.RespResult, error){
-	return nil,nil
+	return new(pb.RespResult),nil
 }
 
 func (s *server)RemoveRequest(ctx context.Context,in *pb.RemoveReqMsg)(*pb.RespResult, error){
@@ -94,11 +89,11 @@ func (s *server)RemoveRequest(ctx context.Context,in *pb.RemoveReqMsg)(*pb.RespR
 	for _,id := range removeIds{
 		if err := util.RemoveServices(team,id,catalog, queryOptons,agent);nil != err{
 			util.Logger.Println(err)
-			return nil,err
+			return new(pb.RespResult),err
 		}
 	}
 
-	return nil,nil
+	return new(pb.RespResult),nil
 }
 func main() {
 	kingpin.Parse()

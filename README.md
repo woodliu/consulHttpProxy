@@ -82,3 +82,25 @@ Options:
 protoc.exe -I proto\ proto\register.proto --go_out=plugins=grpc:proto
 ```
 
+
+
+grpc无法通过route暴露，需要通过lb
+
+```
+# cat consul-proxy-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: consul-proxy
+  labels:
+    name: consul-proxy
+spec:
+  type: NodePort
+  ports:
+    - name: consul-proxy
+      port: 8700
+      nodePort: 30001
+  selector:
+    app: consul
+```
+

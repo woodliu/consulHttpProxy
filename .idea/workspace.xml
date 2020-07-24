@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="03b419f7-e41e-4458-8e60-4cb8daa0c7de" name="Default Changelist" comment="" />
+    <list default="true" id="03b419f7-e41e-4458-8e60-4cb8daa0c7de" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consulProxyClient/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/consulProxyClient/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consulProxyClient/reg.json" beforeDir="false" afterPath="$PROJECT_DIR$/consulProxyClient/reg.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consulProxyServer/consulProxyServer" beforeDir="false" afterPath="$PROJECT_DIR$/consulProxyServer/consulProxyServer" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/consulProxyServer/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/consulProxyServer/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/util.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -59,8 +69,7 @@
     <configuration name="go build consulHttpProxy/consulProxyClient" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="consulHttpProxy" />
       <working_directory value="$PROJECT_DIR$/" />
-      <parameters value="--team=liu --target=127.0.0.1:8700 export --file=D:\sourcecode\gosrc\src\consulHttpProxy\consulProxyClient\export.json" />
-      <sudo value="true" />
+      <parameters value="--team=test --target=10.160.243.237:8700 remove --serviceids=2.2.2.2:8888" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/consulProxyClient/main.go" />
       <package value="consulHttpProxy/consulProxyClient" />
@@ -80,9 +89,9 @@
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="consulHttpProxy" />
       <working_directory value="$PROJECT_DIR$/" />
-      <parameters value="--team=liu --target=127.0.0.1:8700 export --file=D:\sourcecode\gosrc\src\consulHttpProxy\consulProxyClient\export.json" />
+      <useCustomBuildTags value="true" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/consulProxyClient/main.go" />
+      <filePath value="$PROJECT_DIR$/consulProxyServer/main.go" />
       <package value="consulHttpProxy" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
@@ -99,8 +108,8 @@
     </configuration>
     <list>
       <item itemvalue="Go Build.go build consulHttpProxy/consulProxyClient" />
-      <item itemvalue="Go Build.go build consulHttpProxy/consulProxyServer" />
       <item itemvalue="Go Build.go build main.go" />
+      <item itemvalue="Go Build.go build consulHttpProxy/consulProxyServer" />
     </list>
     <recent_temporary>
       <list>
@@ -115,11 +124,15 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="173" y="29" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595488710350">
+    <state x="173" y="29" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595507238073">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="2076" y="-161" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595481608190" />
-    <state x="173" y="29" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595488710350" />
+    <state x="173" y="29" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595507238073" />
+    <state x="393" y="172" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1595503839229">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="393" y="172" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1595503839229" />
     <state x="541" y="93" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1595488666950">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -134,64 +147,68 @@
     </state>
     <state x="2075" y="-16" key="FileChooserDialogImpl/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595405825741" />
     <state x="521" y="200" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1595428508855" />
-    <state width="1323" height="195" key="GridCell.Tab.0.bottom" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.0.bottom/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482235628" />
-    <state width="1323" height="195" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595488833161" />
-    <state width="1323" height="195" key="GridCell.Tab.0.center" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.0.center" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.0.center/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482235628" />
-    <state width="1323" height="195" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595488833161" />
-    <state width="1323" height="195" key="GridCell.Tab.0.left" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.0.left" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.0.left/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482235628" />
-    <state width="1323" height="195" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595488833161" />
-    <state width="1323" height="195" key="GridCell.Tab.0.right" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.0.right" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.0.right/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482235628" />
-    <state width="1323" height="195" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595488833161" />
-    <state width="1323" height="195" key="GridCell.Tab.1.bottom" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.1.bottom/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482230977" />
-    <state width="1323" height="195" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595488833162" />
-    <state width="1323" height="195" key="GridCell.Tab.1.center" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.1.center" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.1.center/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.1.center/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482230977" />
-    <state width="1323" height="195" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595488833162" />
-    <state width="1323" height="195" key="GridCell.Tab.1.left" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.1.left" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.1.left/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.1.left/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482230977" />
-    <state width="1323" height="195" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595488833161" />
-    <state width="1323" height="195" key="GridCell.Tab.1.right" timestamp="1595489187976">
+    <state width="1323" height="227" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right" timestamp="1595514160306">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1323" height="195" key="GridCell.Tab.1.right/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489187976" />
     <state width="1815" height="336" key="GridCell.Tab.1.right/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595482230977" />
-    <state width="1323" height="195" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595488833162" />
+    <state width="1323" height="227" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595514160306" />
     <state x="1798" y="-127" key="SettingsEditor" timestamp="1595405856267">
       <screen x="1366" y="-313" width="1858" height="1080" />
     </state>
     <state x="1798" y="-127" key="SettingsEditor/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595405856267" />
-    <state x="715" y="228" width="592" height="500" key="find.popup" timestamp="1595489161359">
+    <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1595508608735">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1595508608735" />
+    <state x="207" y="153" width="982" height="500" key="find.popup" timestamp="1595504600911">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="715" y="228" width="592" height="500" key="find.popup/0.0.1366.728/1366.-313.1858.1080@0.0.1366.728" timestamp="1595489161359" />
     <state x="2339" y="25" width="806" height="742" key="find.popup/0.0.1366.728/1366.-313.1858.1080@1366.-313.1858.1080" timestamp="1595469907711" />
-    <state x="207" y="153" width="982" height="500" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1595484063067" />
+    <state x="207" y="153" width="982" height="500" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1595504600911" />
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1595426904970">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -202,12 +219,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/consulProxyServer/main.go</url>
-          <line>38</line>
+          <line>37</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/consulProxyServer/main.go</url>
-          <line>42</line>
+          <line>41</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
@@ -222,18 +239,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/consulProxyServer/main.go</url>
-          <line>90</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/consulProxyServer/main.go</url>
-          <line>92</line>
+          <line>87</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/consulProxyClient/main.go</url>
           <line>148</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/consulProxyClient/main.go</url>
+          <line>131</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/consulProxyServer/main.go</url>
+          <line>85</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

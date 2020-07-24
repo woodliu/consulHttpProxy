@@ -1,0 +1,6 @@
+[
+{"ID":"3.3.3.3:9100","Team":"test","Tags":["liu3,liu33,liu333"],"Scheme":"http","MetricPath":"/path3/metrics"},
+{"ID":"4.4.4.4:6666","Team":"test","Tags":["liu4,liu44"],"Scheme":"http","MetricPath":"/path4/metrics"},
+{"ID":"1.1.1.1:9100","Team":"test","Tags":["liu1,liu11"],"Scheme":"http","MetricPath":"/metrics"},
+{"ID":"2.2.2.2:8888","Team":"test","Tags":["liu2"],"Scheme":"https","MetricPath":"/metrics"}
+]

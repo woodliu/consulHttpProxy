@@ -25,8 +25,8 @@ var(
 	add = kingpin.Command("add", "add new services for specify team")
 	addFile = add.Flag("file","file contain services configuration").Required().ExistingFile()
 
-	remove = kingpin.Command("remove", "remove service by servicename")
-	removeServiceName = remove.Flag("servicename","specify a servicename to remove").Required().Strings()
+	remove = kingpin.Command("remove", "remove service by service id")
+	removeServiceIds = remove.Flag("serviceid","specify service id to remove").Required().Strings()
 
 	export = kingpin.Command("export", "export service by servicename")
 	exportFile = export.Flag("file", "directory to export services").Required().String()
@@ -137,7 +137,7 @@ func main() {
 		defer conn.Close()
 		c := pb.NewRequestClient(conn)
 
-		_,err = c.RemoveRequest(context.Background(), &pb.RemoveReqMsg{Team: *team,ServiceId: *removeServiceName})
+		_,err = c.RemoveRequest(context.Background(), &pb.RemoveReqMsg{Team: *team,ServiceId: *removeServiceIds})
 		if nil != err{
 			util.Logger.Fatalln(err)
 			return

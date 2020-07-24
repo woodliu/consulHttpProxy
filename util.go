@@ -93,12 +93,12 @@ func ListServices(team string, catalog *api.Catalog, q *api.QueryOptions)(*pb.Li
 	services,_,err := catalog.Services(q)
 	if nil != err{
 		log.Println(err)
-		return nil,err
+		return new(pb.ListRespMsg), err
 	}
 
 	listResp,err := svcTagToAppInfo(team,services)
 	if nil != err{
-		return nil,err
+		return new(pb.ListRespMsg),err
 	}
 
 	return &pb.ListRespMsg{AppInfos: listResp},nil
@@ -140,7 +140,7 @@ func RemoveServices(team string,service string,catalog *api.Catalog, queryOption
 	}
 
 	if 0 == len(catalogServices){
-		errStr := fmt.Sprintf("No sunc service %s",service)
+		errStr := fmt.Sprintf("No sunch service %s",service)
 		Logger.Println(errStr)
 		return errors.New(errStr)
 	}else if 1 < len(catalogServices){
