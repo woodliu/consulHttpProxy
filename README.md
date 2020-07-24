@@ -94,11 +94,12 @@ You can use a file `reg.json` to add service to consul
 If you want change the exporter metricpath, you need to relabel the prometheus metric `__metrics_path__`.
 
 ```yaml
+      relabel_configs:
         - source_labels: ['__meta_consul_tags']
           regex: ',<.*>,(.*),'
           replacement: '${1}'
           target_label: service_tags
-        - source_labels: ['__meta_consul_service']  #remove consul endpoint from prometheus
+        - source_labels: ['__meta_consul_service']
           regex: '^consul$'
           action: drop
         - source_labels:  ['__meta_consul_service_id']
